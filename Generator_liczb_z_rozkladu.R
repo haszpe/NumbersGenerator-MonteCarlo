@@ -13,9 +13,29 @@ source("Functions.R")
 
 #----Generatory liczb losowych z rozkładu normalnego----------------------------
 
+
+
+
+
+
 #----Metoda dystrybuanty odwrotnej--------------
+
+
+
+
+
+
 #----Metoda akceptacji i odrzuceń---------------
+
+
+
+
+
 #----Metoda transformacji-----------------------
+
+
+
+
 #----Sumy i mieszaniny rozkładów----------------
 
 
