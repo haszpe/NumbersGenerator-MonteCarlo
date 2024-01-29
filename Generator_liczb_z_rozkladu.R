@@ -4,14 +4,17 @@ Generator liczb losowych z zadanego rozkładu
 
 Autorzy projektu:
 Hanna Peciak          113752 
-Paweł Zakrzewski      ......'
+Paweł Zakrzewski      ......
+'
 
 #----Wczytanie funkcji----------------------------------------------------------
 
 source("Functions.R")
 set.seed(10)
 
+
 #----Generatory liczb losowych z rozkładu normalnego----------------------------
+
 
 #----Metoda dystrybuanty odwrotnej--------------
 # Z wykorzystaniem algorytmu Boxa-Mullera
@@ -37,8 +40,26 @@ print(inverse_cumulative_distribution(5, 3, 0.5))
 
 
 #----Metoda akceptacji i odrzuceń---------------
+# Stała c taka, że f(t)/g(t) ≤ c dla wszystkich t takich, że f(t) > 0
 
+accept_reject <- function(n, mean, sigma){
+  random_N <- numeric(n)
 
+  for (i in 1:n){
+    while (TRUE) {
+      z <- runif(1)
+      u <- runif(1)
+      
+      if (exp(-z^2 / 2) / sqrt(2 * pi) > u) {
+        random_N[i] <- z * sigma + mean
+        break
+      }
+      }
+    }
+  return(random_N)
+}
+
+print(accept_reject(5, 3, 0.5))
 
 
 
