@@ -4,7 +4,7 @@ Opracowanie metody Monte-Carlo
 
 Autorzy projektu:
 Hanna Peciak          113752 
-Paweł Zakrzewski      ......'
+Paweł Zakrzewski     117393'
 
 #----Wczytanie funkcji----------------------------------------------------------
 
