@@ -34,7 +34,7 @@ mc2 <- function(n) {
   return(przyblizone_pi)
 }
 
-# Porównanie
+# Porownanie
 
 n <- 10000000
 system.time({
