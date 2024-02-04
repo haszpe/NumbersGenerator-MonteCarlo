@@ -7,13 +7,8 @@ Hanna Peciak          113752
 Paweł Zakrzewski      113752
 '
 
-#----Wczytanie funkcji----------------------------------------------------------
-
-source("Functions.R")
-set.seed(10)
-
-
 #----Generatory liczb losowych z rozkładu normalnego----------------------------
+set.seed(10)
 
 #----Metoda odwrotnej dystrybuanty ----------------
 
@@ -44,9 +39,9 @@ accept_reject <- function(n, mean, sigma){
       u <- runif(1)
       
       if (exp(-z^2 / 2) / sqrt(2 * pi) > u) {
-        
         # Skalowanie o odchylenie i przesunięcie o średnią z zadanego 
         # rozkładu normalnego 
+        z <- z * sign(runif(1) - 0.5)
         random_N[i] <- z * sigma + mean
         break
       }}
@@ -55,7 +50,6 @@ accept_reject <- function(n, mean, sigma){
   }
 
 print(accept_reject(5, 3, 0.5))
-
 
 #----Metoda transformacji CHi^2 -----------------------
 
