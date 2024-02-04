@@ -9,6 +9,7 @@ Paweł Zakrzewski      113752
 
 #----Generatory liczb losowych z rozkładu normalnego----------------------------
 set.seed(10)
+library(MASS)
 
 #----Metoda odwrotnej dystrybuanty ----------------
 
@@ -123,25 +124,23 @@ generate_wishart <- function(d, n, sigma){
   return(wishart_matrix)
   }
 
+# ----Analiza Wisharta ------------------------------------------------------
 
-d <- 3
 Sigma <- matrix(c(1, 0.5, 0.5, 
                   0.5, 1, 0.5, 
                   0.5, 0.5, 1), 
                 nrow = d, ncol = d)
-n <- 5
 
 result <- generate_wishart(3, 5, Sigma)
 
-install.packages("MASS")
-library(MASS)
-
-wishart_samples <- rWishart(3, Sigma, df = n)
+wishart_samples <- rWishart(3, Sigma, df = 5)
 
 print(result)
 print(wishart_samples)
 
-# Obliczenie srednich
+
+#   Obliczenie srednich
+
 re_mean <- colMeans(result)
 print(re_mean)
 wishart_mean <- colMeans(wishart_samples)
