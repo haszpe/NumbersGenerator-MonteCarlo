@@ -39,7 +39,6 @@ print(inverse_cumulative_distribution(5, 3, 0.5))
 
 
 #----Metoda akceptacji i odrzuceń---------------
-# Stała c taka, że f(t)/g(t) ≤ c dla wszystkich t takich, że f(t) > 0
 
 accept_reject <- function(n, mean, sigma){
   random_N <- numeric(n)
@@ -50,25 +49,40 @@ accept_reject <- function(n, mean, sigma){
       u <- runif(1)
       
       if (exp(-z^2 / 2) / sqrt(2 * pi) > u) {
+        
+        # Skalowanie o odchylenie i przesunięcie o średnią z zadanego rozkładu normalnego 
         random_N[i] <- z * sigma + mean
         break
-        }
+      }}
     }
-  }
   return(random_N)
-}
+  }
 
 print(accept_reject(5, 3, 0.5))
 
 
 
-#----Metoda transformacji-----------------------
+#----Metoda transformacji CHi^2 -----------------------
+
+chi_square_transformation <- function(n, mean, sigma){
+  random_N <- numeric(n)
+  
+  for (i in i:n){
+    
+    # Losowanie liczby z rozkładu Chi^2 z jendym stopniem swobody
+    chi_square_random <- rchisq(1, df = 1)
+    
+    # Obliczenie pierwiastku i definicja znaku (dla zachowania symetrii rozkładu)
+    chi_v <- sqrt(chi_squared_values) * sign(runif(1) - 0.5)
+    
+    # Skalowanie o odchylenie i przesunięcie o średnią z zadanego rozkładu normalnego 
+    random_N[i] <- mean + chi_v * sigma
+    }
+  return(random_N)
+  }
 
 
-
-
-
-#----Transformacja Boxa-Mullera--------------
+#----Metoda transformacja Boxa-Mullera--------------
 
 box_muller_transformation <- function(n, mean, sigma) {
   random_N <- numeric(n)
@@ -81,12 +95,12 @@ box_muller_transformation <- function(n, mean, sigma) {
     z <- sqrt(-2 * log(u1)) * cos(2 * pi * u2) 
     z2 <- sqrt(-2 * log(u1)) * sin(2 * pi * u2)
     
-    # Skalowanie o odchylenie i przesunięcie o średnią z zadanego rozkładu
+    # Skalowanie o odchylenie i przesunięcie o średnią z zadanego rozkładu normalnego
     random_N[i] <- z * sigma + mean
-  }
+    }
   
   return(random_N)
-}
+  }
 
 print(box_muller_transformation(5, 3, 0.5))
 
