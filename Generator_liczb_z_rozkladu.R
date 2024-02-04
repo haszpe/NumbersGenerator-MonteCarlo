@@ -89,19 +89,21 @@ box_muller_transformation <- function(n, mean, sigma) {
     u2 <- runif(1)
     
     # Liczba z rozkładu normalnego standaryzowanego N(0,1)
-    z <- sqrt(-2 * log(u1)) * cos(2 * pi * u2) 
+    z1 <- sqrt(-2 * log(u1)) * cos(2 * pi * u2) 
     z2 <- sqrt(-2 * log(u1)) * sin(2 * pi * u2)
     
     # Skalowanie o odchylenie i przesunięcie o średnią z zadanego rozkładu normalnego
-    random_N[i] <- z * sigma + mean
+    if (runif(1) < 0.5) {
+      random_N[i] <- z1 * sigma + mean
+    } else {
+      random_N[i] <- z2 * sigma + mean
     }
-  
+    
+  }
   return(random_N)
   }
 
 print(box_muller_transformation(5, 3, 0.5))
-
-
 
 
 
