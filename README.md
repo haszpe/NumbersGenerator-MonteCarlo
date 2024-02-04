@@ -10,7 +10,7 @@ Autorzy:
     - metodą odwrotnej dystrybuanty
     - metodą akceptacji i odrzuceń
     - metodą transformacji
-    - metodą spektralnej dekompozycji macierzy (wielowymiarowy rozkład normalny)
+    - metodą Box'a-Mullera
       
 - Metoda generowania liczb pseudolosowych z d-wymiarowego rozkładu Wisharta
 - Porównanie dwóch metod przybliżania liczby pi z wykorzystaniem metody Monte Carlo
