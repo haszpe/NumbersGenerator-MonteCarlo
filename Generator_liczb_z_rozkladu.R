@@ -16,27 +16,26 @@ set.seed(10)
 #----Generatory liczb losowych z rozkładu normalnego----------------------------
 
 
-#----Metoda dystrybuanty odwrotnej--------------
-# Z wykorzystaniem algorytmu Boxa-Mullera
 
-inverse_cumulative_distribution <- function(n, mean, sigma) {
+#----Metoda odwrotnej dystrybuanty ----------------
+
+inverse_cumulative_distribution <- function(n, mean, sigma){
   random_N <- numeric(n)
   
-  for (i in 1:n){
-    u1 <- runif(1)
-    u2 <- runif(1)
+  for (i in i:n){
     
-    # Liczba z rozkładu normalnego standaryzowanego
-    z <- sqrt(-2 * log(u1)) * cos(2 * pi * u2) 
+    u <- runif(n)
     
-    # Skalowanie o odchylenie i przesunięcie o średnią z zadanego rozkładu
-    random_N[i] <- z * sigma + mean
-  }
-  
+    # qnorm przekształca u na wartości z rozkładu normalnego o zadanych parametrach
+    z <- qnorm(u, mean = mean, sd = sigma)
+    
+    random_N[i] <- z
+    }
   return(random_N)
-}
+  }
 
 print(inverse_cumulative_distribution(5, 3, 0.5))
+
 
 
 #----Metoda akceptacji i odrzuceń---------------
@@ -53,9 +52,9 @@ accept_reject <- function(n, mean, sigma){
       if (exp(-z^2 / 2) / sqrt(2 * pi) > u) {
         random_N[i] <- z * sigma + mean
         break
-      }
-      }
+        }
     }
+  }
   return(random_N)
 }
 
@@ -68,7 +67,31 @@ print(accept_reject(5, 3, 0.5))
 
 
 
-#----Sumy i mieszaniny rozkładów----------------
+
+#----Transformacja Boxa-Mullera--------------
+
+box_muller_transformation <- function(n, mean, sigma) {
+  random_N <- numeric(n)
+  
+  for (i in 1:n){
+    u1 <- runif(1)
+    u2 <- runif(1)
+    
+    # Liczba z rozkładu normalnego standaryzowanego N(0,1)
+    z <- sqrt(-2 * log(u1)) * cos(2 * pi * u2) 
+    z2 <- sqrt(-2 * log(u1)) * sin(2 * pi * u2)
+    
+    # Skalowanie o odchylenie i przesunięcie o średnią z zadanego rozkładu
+    random_N[i] <- z * sigma + mean
+  }
+  
+  return(random_N)
+}
+
+print(box_muller_transformation(5, 3, 0.5))
+
+
+
 
 
 
