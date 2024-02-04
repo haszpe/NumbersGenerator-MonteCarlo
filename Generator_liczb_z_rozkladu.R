@@ -131,4 +131,23 @@ Sigma <- matrix(c(1, 0.5, 0.5,
                 nrow = d, ncol = d)
 n <- 5
 
-generate_wishart(3, 5, Sigma)
+result <- generate_wishart(3, 5, Sigma)
+
+install.packages("MASS")
+library(MASS)
+
+wishart_samples <- rWishart(3, Sigma, df = n)
+
+print(result)
+print(wishart_samples)
+
+# Obliczenie srednich
+re_mean <- colMeans(result)
+print(re_mean)
+wishart_mean <- colMeans(wishart_samples)
+print(wishart_mean)
+mean_diff <- mean(result - wishart_mean)
+print(mean_diff)
+
+t_test_mean <- t.test(wishart_mean, re_mean)
+print(t_test_mean)
