@@ -4,5 +4,5 @@ Zbiór funkcji pomocniczych
 
 Autorzy projektu:
 Hanna Peciak          113752 
-Paweł Zakrzewski      ......'
+Paweł Zakrzewski      113752'
 

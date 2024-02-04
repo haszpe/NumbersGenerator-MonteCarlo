@@ -4,7 +4,7 @@ Generator liczb losowych z zadanego rozkładu
 
 Autorzy projektu:
 Hanna Peciak          113752 
-Paweł Zakrzewski      ......
+Paweł Zakrzewski      113752
 '
 
 #----Wczytanie funkcji----------------------------------------------------------
