@@ -9,9 +9,9 @@ Autorzy:
 - Zaprezentowanie czterech metod generowania liczb losowych z rozkładu normalnego o zadanych parametrach
     - metodą odwrotnej dystrybuanty
     - metodą akceptacji i odrzuceń
-    - metodą transformacji
+    - metodą transformacji $ch^2$
     - metodą Box'a-Mullera
       
 - Metoda generowania liczb pseudolosowych z d-wymiarowego rozkładu Wisharta
-- Porównanie dwóch metod przybliżania liczby pi z wykorzystaniem metody Monte Carlo
+- Porównanie dwóch metod przybliżania liczby $\pi$ z wykorzystaniem metody Monte Carlo
 
