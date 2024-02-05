@@ -27,6 +27,13 @@ hist(box_muller, main = "M. transformacji Boxa-Muller", col = "lightgreen", xlim
 hist(chi_square, main = "M. transformacji Chi-kwadrat", col = "lightcoral", xlim = c(-5, 20))
 hist(inverse_distribution, main = "M. odwróconej dystybuanty", col = "lightgoldenrod", xlim = c(-5, 20))
 
+# Testowanie wariancji rozkładów
+var.test(accept_r, box_muller)
+var.test(accept_r, chi_square)
+var.test(accept_r, inverse_distribution)
+var.test(box_muller, chi_square)
+var.test(box_muller, inverse_distribution)
+var.test(chi_square, inverse_distribution)
 
 # Benchmark - porównanie czasu wykonywania
 benchmark_results <- microbenchmark::microbenchmark(
