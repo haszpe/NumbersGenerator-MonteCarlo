@@ -37,6 +37,7 @@ mc2 <- function(n) {
 # Porownanie
 
 n <- 10000000
+set.seed(10)
 system.time({
 por_mc1 <- mc1(n)
 print(paste("Metoda 1: ", por_mc1))
