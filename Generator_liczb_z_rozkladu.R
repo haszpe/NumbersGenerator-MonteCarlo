@@ -116,10 +116,10 @@ generate_wishart <- function(d, n, sigma){
   Z <- matrix(rnorm(d * n), nrow = n, ncol = d)
     
   # Faktoryzacja macierzy Z (M = X^T * X)
-  M <- chol(Sigmam pivot=TRUE)
+  Q <- chol(Sigma, pivot = TRUE)
     
   # Przeskalowanie przez macierz kowariancji Σ
-  wishart_matrix <- Z %*% M
+  wishart_matrix <- Z %*% Q
   
   return(wishart_matrix)
   }
